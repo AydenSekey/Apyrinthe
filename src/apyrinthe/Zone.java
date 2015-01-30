@@ -38,6 +38,13 @@ public interface Zone {
 	public void clearZonesAccessible();
 	
 	/**
+	 * Test s'il y a une zone accessible depuis la zone.
+	 * 
+	 * @return <code>true</code> s'il existe une zone acessible, sinon <code>false</code>.
+	 */
+	public boolean hasZoneAccessible();
+
+	/**
 	 * Indique si la zone est une zone de fin.
 	 * 
 	 * @return <code>true</code> si c'est une zone de fin, sinon <code>false</code>.
