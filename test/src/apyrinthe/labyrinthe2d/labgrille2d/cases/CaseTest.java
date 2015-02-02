@@ -215,7 +215,7 @@ public class CaseTest {
 			}
 
 			@Override
-			public boolean accept(VisiteurZone visiteur) {
+			public boolean accept(VisiteurCase visiteur) {
 				return false;
 			}
 			

@@ -3,6 +3,7 @@ package apyrinthe.labyrinthe2d.labgrille2d.cases;
 import java.util.HashSet;
 import java.util.Set;
 
+import apyrinthe.VisiteurZone;
 import apyrinthe.Zone;
 import apyrinthe.labyrinthe2d.labgrille2d.Direction;
 import apyrinthe.labyrinthe2d.labgrille2d.exception.CaseVoisineException;
@@ -147,4 +148,25 @@ public abstract class Case implements Zone {
 			throw new IncorrecteDirectionException("Direction invalide !");
 		}
 	}
+	
+	/**
+	 * {@inheritDoc} <br />
+	 * Si le visiteur est un visiteur de Case alors {@link #accept(VisiteurCase)} est appelée.
+	 */
+	@Override
+	public boolean accept(VisiteurZone visiteur) {
+		if(visiteur instanceof VisiteurCase) {
+			return accept((VisiteurCase) visiteur);
+		}
+		visiteur.visiter(this);
+		return true;
+	}
+	
+	/**
+	 * Autorise ou refuse la visite d'un visiteur de case.
+	 * 
+	 * @param visiteur le visiteur de case.
+	 * @return <code>true</code> si la visite est acceptée par la case.
+	 */
+	public abstract boolean accept(VisiteurCase visiteur);
 }
