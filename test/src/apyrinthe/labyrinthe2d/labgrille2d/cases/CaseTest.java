@@ -81,7 +81,7 @@ public class CaseTest {
 			}
 			
 			@Override
-			public boolean isEnd() {
+			public boolean isSortie() {
 				return false;
 			}
 			
@@ -210,7 +210,7 @@ public class CaseTest {
 	private Case newCase() {
 		return new Case() {
 			@Override
-			public boolean isEnd() {
+			public boolean isSortie() {
 				return false;
 			}
 

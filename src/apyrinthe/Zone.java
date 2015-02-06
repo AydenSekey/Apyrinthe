@@ -49,7 +49,7 @@ public interface Zone {
 	 * 
 	 * @return <code>true</code> si c'est une zone de fin, sinon <code>false</code>.
 	 */
-	public boolean isEnd();
+	public boolean isSortie();
 	
 	/**
 	 * Autorise ou refuse la visite d'un visiteur.

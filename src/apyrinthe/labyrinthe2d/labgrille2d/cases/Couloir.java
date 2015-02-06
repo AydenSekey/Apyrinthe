@@ -26,7 +26,7 @@ public class Couloir extends Case {
 	}
 	
 	@Override
-	public boolean isEnd() {
+	public boolean isSortie() {
 		return isEnd;
 	}
 	
