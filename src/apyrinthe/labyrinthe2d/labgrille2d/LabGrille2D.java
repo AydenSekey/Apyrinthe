@@ -5,6 +5,7 @@ import java.util.Set;
 
 import apyrinthe.Labyrinthe;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.Case;
+import apyrinthe.labyrinthe2d.labgrille2d.exception.ConstructionLabGrille2DException;
 import apyrinthe.labyrinthe2d.labgrille2d.exception.InvalideCoordonneeGrilleException;
 
 /**
@@ -20,8 +21,11 @@ public class LabGrille2D implements Labyrinthe<Case> {
 	 * Crée un labyrinthe.
 	 * @param col le nombre de colonnes de la grille représentant le labyrinthe.
 	 * @param li le nombre de lignes de la grille représentant le labyrinthe.
+	 * @throws ConstructionLabGrille2DException si les paramètres de construction sont incorrects.
 	 */
 	public LabGrille2D(int col, int li) {
+		if(col <= 0 || li <= 0)
+			throw new ConstructionLabGrille2DException(col, li);
 		acces = new HashSet<Case>();
 		nbColonnes = col;
 		nbLignes = li;
