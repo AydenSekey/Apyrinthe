@@ -1,7 +1,5 @@
 package apyrinthe.labyrinthe2d.labgrille2d.cases;
 
-import apyrinthe.VisiteurZone;
-
 /**
  * Case sans particularité, sur laquelle on peut se déplacer.
  */
