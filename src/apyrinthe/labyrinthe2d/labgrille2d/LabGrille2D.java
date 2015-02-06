@@ -122,4 +122,22 @@ public class LabGrille2D implements Labyrinthe<Case> {
 			}
 		}
 	}
+
+	/**
+	 * Donne le nombre de lignes de la grille du labyrinthe.
+	 * 
+	 * @return le nombre de lignes.
+	 */
+	public int getNbLignes() {
+		return nbLignes;
+	}
+
+	/**
+	 * Donne le nombre de colonnes de la grille du labyrinthe.
+	 * 
+	 * @return le nombre de colonnes.
+	 */
+	public int getNbColonnes() {
+		return nbColonnes;
+	}
 }
