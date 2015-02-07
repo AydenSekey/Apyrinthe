@@ -68,7 +68,6 @@ public class LabGrille2D implements Labyrinthe<Case> {
 		if(valideCoordonnee(col, li)) {
 			int pos = calculPosition(col, li);
 			grille[pos] = laCase;
-			updateVoisines(col, li);
 		} else {
 			throw new InvalideCoordonneeGrilleException(col, li);
 		}
@@ -88,6 +87,12 @@ public class LabGrille2D implements Labyrinthe<Case> {
 		return col >= 0 && li >= 0 && col < nbColonnes && li < nbLignes;
 	}
 	
+	/**
+	 * Met à jour les liens d'accès d'une case avec ses voisines.
+	 * 
+	 * @param col la colonne de la case pour laquelle mettre à jour les voisines.
+	 * @param li la ligne de la case pour laquelle mettre à jour les voisines.
+	 */
 	public void updateVoisines(int col, int li) {
 		if(!valideCoordonnee(col, li)) {
 			throw new InvalideCoordonneeGrilleException(col, li);
@@ -110,7 +115,7 @@ public class LabGrille2D implements Labyrinthe<Case> {
 			}
 		}
 		if(col + 1 < nbColonnes) {
-			final Case caseEst = getCase(col, li);
+			final Case caseEst = getCase(col + 1, li);
 			if(caseEst != null) {
 				if(laCase != null)
 					laCase.setVoisine(Direction.EST, caseEst);
@@ -118,7 +123,7 @@ public class LabGrille2D implements Labyrinthe<Case> {
 			}
 		}
 		if(col - 1 > 0) {
-			final Case caseOuest = getCase(col, li);
+			final Case caseOuest = getCase(col - 1, li);
 			if(caseOuest != null) {
 				if(laCase != null)
 					laCase.setVoisine(Direction.OUEST, caseOuest);
