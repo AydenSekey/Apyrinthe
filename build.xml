@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Apyrinthe" default="dist" >
+	<property name="app.name" value="apyrinthe" />
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="jar.dir" value="${build.dir}/jar" />
+	<property name="doc.dir" value="doc/javadoc" />
+	<property name="dist.dir" value="dist" />
+	
+	<target name="init" >
+		<mkdir dir="${classes.dir}" />
+		<mkdir dir="${jar.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+	
+	<target name="compile" depends="init">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" >
+			<include name="**/*.java" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile" description="Crée l'archive JAR de Apyrinthe" >
+		<jar destfile="${jar.dir}/${app.name}.jar" basedir="${classes.dir}" >
+			<include name="**/*.class" />
+		</jar>
+	</target>
+
+	<target name="clean" description="Supprime les fichiers du répertoire de construction" >
+		<delete dir="${classes.dir}" />
+		<delete dir="${jar.dir}" />
+	</target>
+
+	<target name="clean_dist" description="Supprime le contenu du répertoire de distribution" >
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<target name="dist" depends="clean_dist,jar" >
+		<copy file="${jar.dir}/${app.name}.jar" todir="${dist.dir}" />
+		<copy todir="${dist.dir}/licence" >
+			<fileset dir="licence" />
+		</copy>
+	</target>
+</project>
