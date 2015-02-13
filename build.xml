@@ -35,10 +35,17 @@
 		<delete dir="${dist.dir}" />
 	</target>
 	
-	<target name="dist" depends="clean_dist,jar" >
+	<target name="dist" depends="clean_dist,jar" description="Regroupe les éléments pour la distribution du projet.">
 		<copy file="${jar.dir}/${app.name}.jar" todir="${dist.dir}" />
 		<copy todir="${dist.dir}/licence" >
 			<fileset dir="licence" />
 		</copy>
+	</target>
+	
+	<target name="zip_dist" depends="dist" description="Crée une archive de distribution.">
+		<zip destfile="${dist.dir}/${app.name}.zip" basedir="${dist.dir}">
+			<include name="**/*" />
+			<exclude name="${app.name}.zip" />
+		</zip>
 	</target>
 </project>
