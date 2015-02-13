@@ -118,5 +118,7 @@ public class LabGrille2DTest {
 		}
 		assertEquals("Nombre de voisines incorrect pour case1.", 1, case1.getZonesAccessibles().size());
 		assertEquals("Nombre de voisines incorrect pour case2.", 1, case2.getZonesAccessibles().size());
+		assertTrue("La case2 n'est pas au nord de la case1.", case1.getVoisine(Direction.NORD) == case2);
+		assertTrue("La case1 n'est pas au sud de la case2.", case2.getVoisine(Direction.SUD) == case1);
 	}
 }

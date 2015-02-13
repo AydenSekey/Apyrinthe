@@ -30,6 +30,7 @@ import apyrinthe.labyrinthe2d.labgrille2d.exception.InvalideCoordonneeGrilleExce
 
 /**
  * Labyrinthe à deux dimensions représenté par une grille.
+ * La coordonnée (0;0) au coin sud-ouest.
  */
 public class LabGrille2D implements Labyrinthe<Case> {
 	private final Set<Case> acces;
