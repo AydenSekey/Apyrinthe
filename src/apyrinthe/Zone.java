@@ -65,9 +65,9 @@ public interface Zone {
 	public boolean hasZoneAccessible();
 
 	/**
-	 * Indique si la zone est une zone de fin.
+	 * Indique si la zone est une sortie.
 	 * 
-	 * @return <code>true</code> si c'est une zone de fin, sinon <code>false</code>.
+	 * @return <code>true</code> si c'est une sortie, sinon <code>false</code>.
 	 */
 	public boolean isSortie();
 	
