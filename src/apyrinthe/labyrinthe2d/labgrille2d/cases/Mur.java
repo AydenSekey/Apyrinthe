@@ -23,20 +23,34 @@ package apyrinthe.labyrinthe2d.labgrille2d.cases;
 import apyrinthe.VisiteurZone;
 
 /**
- * Visiteur pour les différents types de case.
+ * Case representant un mur. On ne peut pas s'y déplacer. N'accepte que les visiteurs de cases. 
  */
-public interface VisiteurCase extends VisiteurZone {
+public class Mur extends Case {
+
 	/**
-	 * Visite d'un couloir.
+	 * Un mur n'est jamais une zone de sortie.
 	 * 
-	 * @param couloir le couloir à visiter.
+	 * @return <code>false</code>
 	 */
-	public void visiter(Couloir couloir);
-	
+	@Override
+	public boolean isSortie() {
+		return false;
+	}
+
+	@Override
+	public boolean accept(VisiteurCase visiteur) {
+		visiteur.visiter(this);
+		return true;
+	}
+
 	/**
-	 * Visite un mur.
-	 * 
-	 * @param mur le mur à visiter.
+	 * Refuse la visite aux visiteurs qui ne sont pas des {@link VisiteurCase}.
 	 */
-	public void visiter(Mur mur);
+	@Override
+	public boolean accept(VisiteurZone visiteur) {
+		if(visiteur instanceof VisiteurCase) {
+			return accept((VisiteurCase) visiteur);
+		}
+		return false;
+	}
 }
