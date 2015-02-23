@@ -25,7 +25,7 @@ import apyrinthe.labyrinthe2d.labgrille2d.LabGrille2D;
  * Base commune aux vues de {@link LabGrille2D}.
  */
 public abstract class LabGrille2DView {
-	private LabGrille2D labGrille2d;
+	protected LabGrille2D labGrille2d;
 	
 	/**
 	 * Crée une vue de {@link LabGrille2D}
@@ -41,6 +41,7 @@ public abstract class LabGrille2DView {
 	}
 
 	public void setLabGrille2d(LabGrille2D labGrille2d) {
+		assert labGrille2d != null;
 		this.labGrille2d = labGrille2d;
 	}
 
