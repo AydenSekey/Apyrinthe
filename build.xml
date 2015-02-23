@@ -25,6 +25,12 @@
 			<include name="**/*.class" />
 		</jar>
 	</target>
+	
+	<target name="doc">
+		<delete dir="${doc.dir}" />
+		<mkdir dir="${doc.dir}" />
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}" />
+	</target>
 
 	<target name="clean" description="Supprime les fichiers du répertoire de construction" >
 		<delete dir="${classes.dir}" />
