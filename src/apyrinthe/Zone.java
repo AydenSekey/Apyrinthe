@@ -28,10 +28,10 @@ import java.util.Set;
 public interface Zone {
 	
 	/**
-	 * Donne l'ensemble des zones potentiellement accessibles depuis la zone. <br />
-	 * Potentiellement signifit que la zone peut être innacessible selon des règles qui lui sont propres. <br />
-	 * Par exemple une zone avec une porte bloquant l'accès quand elle est fermée mais autorisant l'acces quand elle est ouverte. <br />
-	 * <br />
+	 * Donne l'ensemble des zones potentiellement accessibles depuis la zone. <br>
+	 * Potentiellement signifit que la zone peut être innacessible selon des règles qui lui sont propres. <br>
+	 * Par exemple une zone avec une porte bloquant l'accès quand elle est fermée mais autorisant l'acces quand elle est ouverte. <br>
+	 * <br>
 	 * Ces zones sont acessibles dans le sens où l'on peut intéragir avec elles.
 	 * 
 	 * @return l'ensemble des zones accessibles depuis la zone.

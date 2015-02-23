@@ -22,8 +22,6 @@ package apyrinthe;
 
 /**
  * Interface pour visiter les zones.
- * 
- * @param <Z> le type de zone.
  */
 public interface VisiteurZone {
 	

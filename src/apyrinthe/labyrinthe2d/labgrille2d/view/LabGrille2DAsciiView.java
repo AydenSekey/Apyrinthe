@@ -100,6 +100,7 @@ public class LabGrille2DAsciiView extends LabGrille2DView implements VisiteurCas
 	 * Ecrit le texte ASCII de la vue dans un flux.
 	 * 
 	 * @param out le flux dans lequel écrire la sortie.
+	 * @throws IOException en cas d'erreur d'écriture dans le flux.
 	 */
 	public void print(OutputStream out) throws IOException {
 		update();

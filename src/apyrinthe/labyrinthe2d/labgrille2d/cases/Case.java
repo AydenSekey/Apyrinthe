@@ -53,7 +53,7 @@ public abstract class Case implements Zone {
 	}
 
 	/**
-	 * {@inheritDoc} <br />
+	 * {@inheritDoc} <br>
 	 * La zone est ajouté si elle est de type {@link Case} et si il y a moins de 4 voisines à la case.
 	 */
 	@Override
@@ -170,7 +170,7 @@ public abstract class Case implements Zone {
 	}
 	
 	/**
-	 * {@inheritDoc} <br />
+	 * {@inheritDoc} <br>
 	 * Si le visiteur est un visiteur de Case alors {@link #accept(VisiteurCase)} est appelée.
 	 */
 	@Override

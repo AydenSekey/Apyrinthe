@@ -35,7 +35,7 @@ public interface Labyrinthe<Z extends Zone> {
 	public Set<Z> getZones();
 	
 	/**
-	 * Donne l'ensemble des zones d'accès au labyrinthe. <br />
+	 * Donne l'ensemble des zones d'accès au labyrinthe. <br>
 	 * C'est un sous-ensemble de l'ensemble retourné par {@link #getZones()}.
 	 * 
 	 * @return les zones d'accès au labyrinthe.
