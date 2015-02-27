@@ -98,9 +98,15 @@ public class LabGrille2DTest {
 	
 	@Test 
 	public void testUpdateVoisines() {
-		LabGrille2D laby = new LabGrille2D(5, 6);
+		/* ...
+		 * ...
+		 * 23.
+		 * 1..
+		 */
+		LabGrille2D laby = new LabGrille2D(3, 4);
 		Case case1 = new Couloir();
 		Case case2 = new Couloir();
+		Case case3 = new Couloir();
 		laby.setCase(0, 0, case1);
 		
 		try {
@@ -120,5 +126,17 @@ public class LabGrille2DTest {
 		assertEquals("Nombre de voisines incorrect pour case2.", 1, case2.getZonesAccessibles().size());
 		assertTrue("La case2 n'est pas au nord de la case1.", case1.getVoisine(Direction.NORD) == case2);
 		assertTrue("La case1 n'est pas au sud de la case2.", case2.getVoisine(Direction.SUD) == case1);
+		
+		laby.setCase(1, 1, case3);
+		try {
+			laby.updateVoisines();
+		} catch(CaseVoisineException e) {
+			fail("Erreur de modification de voisine : " + e.getMessage());
+		}
+		assertEquals("Nombre de voisines incorrect pour case1.", 1, case1.getZonesAccessibles().size());
+		assertEquals("Nombre de voisines incorrect pour case2.", 2, case2.getZonesAccessibles().size());
+		assertEquals("Nombre de voisines incorrect pour case3.", 1, case3.getZonesAccessibles().size());
+		assertTrue("La case2 n'est pas à l'ouest de la case3.", case3.getVoisine(Direction.OUEST) == case2);
+		assertTrue("La case3 n'est pas à l'est de la case2.", case2.getVoisine(Direction.EST) == case3);
 	}
 }

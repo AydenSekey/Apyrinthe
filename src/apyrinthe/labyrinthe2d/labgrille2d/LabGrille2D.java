@@ -152,6 +152,14 @@ public class LabGrille2D implements Labyrinthe<Case> {
 			}
 		}
 	}
+	
+	public void updateVoisines() {
+		for(int col = 0; col < nbColonnes; col++) {
+			for(int li = 0 ; li < nbLignes; li++) {
+				updateVoisines(col, li);
+			}
+		}
+	}
 
 	/**
 	 * Donne le nombre de lignes de la grille du labyrinthe.
