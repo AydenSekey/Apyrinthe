@@ -223,6 +223,22 @@ public class CaseTest {
 		laCase.removeZoneAccessible(laCase.getVoisine(Direction.EST));
 		assertNull("La voisine Est existe après suppression", laCase.getVoisine(Direction.EST));
 	}
+	
+	@Test
+	public void testToString() {
+		Case case1 = newCase();
+		Case case2 = newCase();
+		
+		case1.setVoisine(Direction.NORD, case2);
+		case2.setVoisine(Direction.SUD, case1);
+		
+		final String hash1 = Integer.toHexString(case1.hashCode());
+		final String hash2 = Integer.toHexString(case2.hashCode());
+		final String classe = case1.getClass().getName();
+		
+		assertEquals(classe + "@" + hash1 + "[voisines : NORD => " + classe + "@" + hash2 + ", EST => null, SUD => null, OUEST => null]", case1.toString());
+		assertEquals(classe + "@" + hash2 + "[voisines : NORD => null, EST => null, SUD => " + classe + "@" + hash1 + ", OUEST => null]", case2.toString());
+	}
 
 	/*
 	 * Crée une instance de Case dont aucune méthode non abstraite n'est redéfinie par rapport au type Case.

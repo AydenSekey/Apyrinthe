@@ -189,4 +189,41 @@ public abstract class Case implements Zone {
 	 * @return <code>true</code> si la visite est acceptée par la case.
 	 */
 	public abstract boolean accept(VisiteurCase visiteur);
+	
+	@Override
+	public String toString() {
+		// Utilisation d'un buffer de 256 caractères pour éviter la réallocation mémoire.
+		StringBuilder builder = new StringBuilder(256);
+		builder.append(super.toString());
+		builder.append("[voisines : ");
+		Case c = voisines[Direction.NORD];
+		builder.append("NORD => ");
+		appendObjectToString(builder, c);
+		builder.append(", ");
+		c = voisines[Direction.EST];
+		builder.append("EST => ");
+		appendObjectToString(builder, c);
+		builder.append(", ");
+		c = voisines[Direction.SUD];
+		builder.append("SUD => ");
+		appendObjectToString(builder, c);
+		builder.append(", ");
+		c = voisines[Direction.OUEST];
+		builder.append("OUEST => ");
+		appendObjectToString(builder, c);
+		builder.append(']');
+		return builder.toString();
+	}
+	
+	/*
+	 * Ajoute dans un StringBuilder l'équivalent de Object.toString() pour une case.
+	 */
+	private static void appendObjectToString(StringBuilder builder, Case c) {
+		if(c != null) {
+			builder.append(c.getClass().getName()).append('@');
+			builder.append(Integer.toHexString(c.hashCode()));
+		} else {
+			builder.append("null");
+		}
+	}
 }
