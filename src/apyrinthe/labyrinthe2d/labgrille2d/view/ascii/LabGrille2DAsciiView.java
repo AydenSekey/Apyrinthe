@@ -17,7 +17,7 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with Apyrinthe.  If not, see <http://www.gnu.org/licenses/>.
  */
-package apyrinthe.labyrinthe2d.labgrille2d.view;
+package apyrinthe.labyrinthe2d.labgrille2d.view.ascii;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -27,6 +27,7 @@ import apyrinthe.labyrinthe2d.labgrille2d.LabGrille2D;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.Couloir;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.Mur;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.VisiteurCase;
+import apyrinthe.labyrinthe2d.labgrille2d.view.LabGrille2DView;
 
 /**
  * Vue ASCII d'un labyrinthe 2D représenté par une grille

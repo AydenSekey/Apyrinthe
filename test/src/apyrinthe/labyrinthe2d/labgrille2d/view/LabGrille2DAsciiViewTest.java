@@ -26,6 +26,7 @@ import org.junit.Test;
 import apyrinthe.labyrinthe2d.labgrille2d.LabGrille2D;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.Couloir;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.Mur;
+import apyrinthe.labyrinthe2d.labgrille2d.view.ascii.LabGrille2DAsciiView;
 
 public class LabGrille2DAsciiViewTest {
 
