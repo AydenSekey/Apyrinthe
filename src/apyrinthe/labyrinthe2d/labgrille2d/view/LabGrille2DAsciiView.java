@@ -74,7 +74,11 @@ public class LabGrille2DAsciiView extends LabGrille2DView implements VisiteurCas
 	 */
 	@Override
 	public void visiter(Couloir couloir) {
-		affichage.append('.');
+		if(couloir.isSortie()) {
+			affichage.append('>');
+		} else {
+			affichage.append('.');
+		}
 	}
 
 	/**

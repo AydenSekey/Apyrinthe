@@ -35,7 +35,7 @@ public class LabGrille2DAsciiViewTest {
 		LabGrille2DAsciiView view = new LabGrille2DAsciiView(laby);
 		view.update();
 		String result = view.getAscii();
-		String attendu = "#####\n..#.#\n#...#\n###.#\n";
+		String attendu = "#####\n..#.#\n#...#\n###>#\n";
 		assertEquals("Affichage incorrect.", attendu, result);
 	}
 
@@ -44,7 +44,7 @@ public class LabGrille2DAsciiViewTest {
 		 * #####
 		 *   # #
 		 * #   #
-		 * ### #
+		 * ###>#
 		 */
 		LabGrille2D laby = new LabGrille2D(5, 4);
 		laby.setCase(0, 0, new Mur());
@@ -59,7 +59,7 @@ public class LabGrille2DAsciiViewTest {
 		laby.setCase(2, 1, new Couloir());
 		laby.setCase(2, 2, new Mur());
 		laby.setCase(2, 3, new Mur());
-		laby.setCase(3, 0, new Couloir());
+		laby.setCase(3, 0, new Couloir(true)); // C'est la sortie.
 		laby.setCase(3, 1, new Couloir());
 		laby.setCase(3, 2, new Couloir());
 		laby.setCase(3, 3, new Mur());
