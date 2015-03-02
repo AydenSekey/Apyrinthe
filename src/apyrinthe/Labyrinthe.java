@@ -41,4 +41,27 @@ public interface Labyrinthe<Z extends Zone> {
 	 * @return les zones d'accès au labyrinthe.
 	 */
 	public Set<Z> getAcces();
+	
+	/**
+	 * Ajoute une zone en tant qu'accès au labyrinthe.<br>
+	 * La zone doit être une zone du labyrinthe.
+	 * 
+	 * @param zone la zone à enregistrée en tant qu'accès.
+	 */
+	public void addAcces(Z zone);
+	
+	/**
+	 * Supprime un accès au labyrinthe.
+	 * 
+	 * @param zone l'accès à supprimer.
+	 */
+	public void removeAcces(Z zone);
+	
+	/**
+	 * Vérifie si une zone est une zone d'accès au labyrinthe.
+	 * 
+	 * @param zone la zone pour laquelle faire la vérification.
+	 * @return <code>true</code> si c'est une zone d'accès, sinon <code>false</code>.
+	 */
+	public boolean isAcces(Z zone);
 }

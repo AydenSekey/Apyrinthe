@@ -153,6 +153,9 @@ public class LabGrille2D implements Labyrinthe<Case> {
 		}
 	}
 	
+	/**
+	 * Met à jour toutes les voisines de toutes les cases.
+	 */
 	public void updateVoisines() {
 		for(int col = 0; col < nbColonnes; col++) {
 			for(int li = 0 ; li < nbLignes; li++) {
@@ -177,5 +180,20 @@ public class LabGrille2D implements Labyrinthe<Case> {
 	 */
 	public int getNbColonnes() {
 		return nbColonnes;
+	}
+
+	@Override
+	public void addAcces(Case zone) {
+		acces.add(zone);
+	}
+
+	@Override
+	public void removeAcces(Case zone) {
+		acces.remove(zone);
+	}
+	
+	@Override
+	public boolean isAcces(Case zone) {
+		return acces.contains(zone);
 	}
 }
