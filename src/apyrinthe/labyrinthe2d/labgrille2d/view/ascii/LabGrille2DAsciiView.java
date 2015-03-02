@@ -24,6 +24,7 @@ import java.io.OutputStream;
 
 import apyrinthe.Zone;
 import apyrinthe.labyrinthe2d.labgrille2d.LabGrille2D;
+import apyrinthe.labyrinthe2d.labgrille2d.cases.Case;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.Couloir;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.Mur;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.VisiteurCase;
@@ -32,9 +33,9 @@ import apyrinthe.labyrinthe2d.labgrille2d.view.LabGrille2DView;
 /**
  * Vue ASCII d'un labyrinthe 2D représenté par une grille
  */
-public class LabGrille2DAsciiView extends LabGrille2DView implements VisiteurCase {
+public class LabGrille2DAsciiView extends LabGrille2DView {
 	private final StringBuilder affichage;
-	private VisiteurCase visiteurCase;
+	private AsciiCaseStrategy asciiStrategie;
 	
 	/**
 	 * Crée une vue du labyrinthe sous format de texte ASCII.
@@ -45,6 +46,7 @@ public class LabGrille2DAsciiView extends LabGrille2DView implements VisiteurCas
 		super(labyrinthe);
 		int capacityMini = labyrinthe.getNbColonnes() * labyrinthe.getNbLignes();
 		affichage = new StringBuilder(capacityMini);
+		asciiStrategie = new ApyrintheAsciiCaseStrategy();
 	}
 	
 	@Override
@@ -54,41 +56,33 @@ public class LabGrille2DAsciiView extends LabGrille2DView implements VisiteurCas
 		affichage.delete(0, affichage.length());
 		for(int li = nbLi - 1; li >= 0; li--) {
 			for(int col = 0; col < nbCol; col++) {
-				labGrille2d.getCase(col, li).accept(this);
+				Case c = labGrille2d.getCase(col, li);
+				if(c != null) {
+					affichage.append(asciiStrategie.asciiCase(c));
+				} else {
+					affichage.append('?');
+				}
 			}
 			affichage.append('\n');
 		}
 	}
-
+	
 	/**
-	 * Cette méthode est utilisée en interne, elle ne devrait pas être appelée.
-	 * {@inheritDoc}
+	 * Donne la stratégie de représentation ascii des case.
+	 * 
+	 * @return la stratégie.
 	 */
-	@Override
-	public void visiter(Zone zone) {
-		affichage.append('?');
+	public AsciiCaseStrategy getAsciiStrategy() {
+		return asciiStrategie;
 	}
-
+	
 	/**
-	 * Cette méthode est utilisée en interne, elle ne devrait pas être appelée.
-	 * {@inheritDoc}
+	 * Modifie la stratégie de représentation ASCII des cases.
+	 * 
+	 * @param strategy la nouvelle stratégie.
 	 */
-	@Override
-	public void visiter(Couloir couloir) {
-		if(couloir.isSortie()) {
-			affichage.append('>');
-		} else {
-			affichage.append('.');
-		}
-	}
-
-	/**
-	 * Cette méthode est utilisée en interne, elle ne devrait pas être appelée.
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void visiter(Mur mur) {
-		affichage.append('#');
+	public void setAsciiStrategy(AsciiCaseStrategy strategy) {
+		asciiStrategie = strategy;
 	}
 
 	/**
