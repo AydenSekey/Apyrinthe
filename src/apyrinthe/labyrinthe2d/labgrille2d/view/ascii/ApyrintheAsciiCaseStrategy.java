@@ -7,10 +7,10 @@ import apyrinthe.labyrinthe2d.labgrille2d.cases.Mur;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.VisiteurCase;
 
 /**
- * Proposition de stratégie de représentation ASCII des cases.
- * # : mur
- * . : couloir
- * > : sortie
+ * Proposition de stratégie de représentation ASCII des cases. <br>
+ * # : mur <br>
+ * . : couloir <br>
+ * &gt; : sortie
  */
 public class ApyrintheAsciiCaseStrategy implements AsciiCaseStrategy, VisiteurCase {
 	private char asciiChar;
