@@ -17,23 +17,36 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with Apyrinthe.  If not, see <http://www.gnu.org/licenses/>.
  */
-package apyrinthe.labyrinthe2d.labgrille2d.view;
-
-import apyrinthe.LabyrintheView;
-import apyrinthe.labyrinthe2d.labgrille2d.LabGrille2D;
+package apyrinthe;
 
 /**
- * Base commune aux vues de {@link LabGrille2D}.
+ * Base pour les vues de Labyrinthe.
+ *
+ * @param <L> le type de labyrinthe.
  */
-public abstract class LabGrille2DView extends LabyrintheView<LabGrille2D>{
-	
+public abstract class LabyrintheView <L extends Labyrinthe<?>> {
+	protected L model;
+
 	/**
-	 * Crée une vue de {@link LabGrille2D}
+	 * Crée une vue de labyrinthe.
 	 * 
-	 * @param labGrille2d le modèle associé à la vue.
+	 * @param model le labyrinthe à visualiser
 	 */
-	public LabGrille2DView(LabGrille2D labGrille2d) {
-		super(labGrille2d);
+	public LabyrintheView(L model) {
+		this.model = model;
 	}
 
+	public L getModel() {
+		return model;
+	}
+
+	public void setModel(L model) {
+		assert model != null;
+		this.model = model;
+	}
+
+	/**
+	 * Met à jour la vue.
+	 */
+	public abstract void update();
 }

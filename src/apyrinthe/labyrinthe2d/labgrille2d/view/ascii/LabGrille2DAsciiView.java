@@ -22,12 +22,8 @@ package apyrinthe.labyrinthe2d.labgrille2d.view.ascii;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import apyrinthe.Zone;
 import apyrinthe.labyrinthe2d.labgrille2d.LabGrille2D;
 import apyrinthe.labyrinthe2d.labgrille2d.cases.Case;
-import apyrinthe.labyrinthe2d.labgrille2d.cases.Couloir;
-import apyrinthe.labyrinthe2d.labgrille2d.cases.Mur;
-import apyrinthe.labyrinthe2d.labgrille2d.cases.VisiteurCase;
 import apyrinthe.labyrinthe2d.labgrille2d.view.LabGrille2DView;
 
 /**
@@ -51,12 +47,12 @@ public class LabGrille2DAsciiView extends LabGrille2DView {
 	
 	@Override
 	public void update() {
-		final int nbCol = labGrille2d.getNbColonnes();
-		final int nbLi = labGrille2d.getNbLignes();
+		final int nbCol = model.getNbColonnes();
+		final int nbLi = model.getNbLignes();
 		affichage.delete(0, affichage.length());
 		for(int li = nbLi - 1; li >= 0; li--) {
 			for(int col = 0; col < nbCol; col++) {
-				Case c = labGrille2d.getCase(col, li);
+				Case c = model.getCase(col, li);
 				if(c != null) {
 					affichage.append(asciiStrategie.asciiCase(c));
 				} else {
