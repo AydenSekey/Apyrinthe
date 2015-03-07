@@ -20,6 +20,7 @@ along with Apyrinthe.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <project name="Apyrinthe" default="dist" >
 	<property name="app.name" value="apyrinthe" />
+	<property name="app.version" value="0.0" />
 	<property name="src.dir" value="src" />
 	<property name="build.dir" value="build" />
 	<property name="classes.dir" value="${build.dir}/classes" />
@@ -41,6 +42,10 @@ along with Apyrinthe.  If not, see <http://www.gnu.org/licenses/>.
 
 	<target name="jar" depends="compile" description="Crée l'archive JAR de Apyrinthe" >
 		<jar destfile="${jar.dir}/${app.name}.jar" basedir="${classes.dir}" >
+			<manifest>
+				<attribute name="Implementation-Title" value="${app.name}"/>
+				<attribute name="Implementation-Version" value="${app.version}"/>
+			</manifest>
 			<include name="**/*.class" />
 		</jar>
 	</target>
@@ -68,7 +73,7 @@ along with Apyrinthe.  If not, see <http://www.gnu.org/licenses/>.
 	</target>
 	
 	<target name="zip_dist" depends="dist" description="Crée une archive de distribution.">
-		<zip destfile="${dist.dir}/${app.name}.zip" basedir="${dist.dir}">
+		<zip destfile="${dist.dir}/${app.name}_${app.version}.zip" basedir="${dist.dir}">
 			<include name="**/*" />
 			<exclude name="${app.name}.zip" />
 		</zip>
