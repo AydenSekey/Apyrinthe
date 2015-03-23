@@ -70,6 +70,7 @@ along with Apyrinthe.  If not, see <http://www.gnu.org/licenses/>.
 		<copy todir="${dist.dir}/licence" >
 			<fileset dir="licence" />
 		</copy>
+		<copy file="README.md" todir="${dist.dir}" />
 	</target>
 	
 	<target name="zip_dist" depends="dist" description="Crée une archive de distribution.">
