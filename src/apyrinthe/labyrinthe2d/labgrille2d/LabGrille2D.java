@@ -109,7 +109,7 @@ public class LabGrille2D implements Labyrinthe<Case> {
 	}
 	
 	/**
-	 * Met à jour les liens d'accès d'une case avec ses voisines.
+	 * Met à jour les liens d'accès d'une case vers ses voisines.
 	 * 
 	 * @param col la colonne de la case pour laquelle mettre à jour les voisines.
 	 * @param li la ligne de la case pour laquelle mettre à jour les voisines.
@@ -119,36 +119,30 @@ public class LabGrille2D implements Labyrinthe<Case> {
 			throw new InvalideCoordonneeGrilleException(col, li);
 		}
 		final Case laCase = getCase(col, li);
-		if(li + 1 < nbLignes) {
-			final Case caseNord = getCase(col, li + 1);
-			if(caseNord != null) {
-				if(laCase != null)
+		if(laCase != null) {
+			if(li + 1 < nbLignes) {
+				final Case caseNord = getCase(col, li + 1);
+				if(caseNord != null) {
 					laCase.setVoisine(Direction.NORD, caseNord);
-				caseNord.setVoisine(Direction.SUD, laCase);
+				}
 			}
-		}
-		if(li - 1 > 0) {
-			final Case caseSud = getCase(col, li - 1);
-			if(caseSud != null) {
-				if(laCase != null)
+			if(li - 1 >= 0) {
+				final Case caseSud = getCase(col, li - 1);
+				if(caseSud != null) {
 					laCase.setVoisine(Direction.SUD, caseSud);
-				caseSud.setVoisine(Direction.NORD, laCase);
+				}
 			}
-		}
-		if(col + 1 < nbColonnes) {
-			final Case caseEst = getCase(col + 1, li);
-			if(caseEst != null) {
-				if(laCase != null)
+			if(col + 1 < nbColonnes) {
+				final Case caseEst = getCase(col + 1, li);
+				if(caseEst != null) {
 					laCase.setVoisine(Direction.EST, caseEst);
-				caseEst.setVoisine(Direction.OUEST, laCase);
+				}
 			}
-		}
-		if(col - 1 > 0) {
-			final Case caseOuest = getCase(col - 1, li);
-			if(caseOuest != null) {
-				if(laCase != null)
+			if(col - 1 >= 0) {
+				final Case caseOuest = getCase(col - 1, li);
+				if(caseOuest != null) {
 					laCase.setVoisine(Direction.OUEST, caseOuest);
-				caseOuest.setVoisine(Direction.EST, laCase);
+				}
 			}
 		}
 	}
